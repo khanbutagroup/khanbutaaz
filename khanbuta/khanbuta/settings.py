@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ki&j@xcqsezp0l94*8*304*!u27r@0wu7xszms$9vdu=trj=&l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,10 +42,14 @@ INSTALLED_APPS = [
     #installed apps
     'rest_framework',
     'parler',
+    'corsheaders',
 
     #local apps
     'core.apps.CoreConfig',
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 PARLER_LANGUAGES = {

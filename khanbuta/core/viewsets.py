@@ -15,7 +15,7 @@ class SliderViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        slider = get_object_or_404(self.queryset, slug=pk)
+        slider = get_object_or_404(self.queryset, pk=pk)
         serializers_class = SliderSerializer(slider)
         return Response(serializers_class.data)
 
@@ -30,7 +30,7 @@ class ServiceViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        service = get_object_or_404(self.queryset, slug=pk)
+        service = get_object_or_404(self.queryset, pk=pk)
         serializers_class = ServiceSerializer(service)
         return Response(serializers_class.data)
 
@@ -45,7 +45,7 @@ class CategoryViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        category = get_object_or_404(self.queryset, slug=pk)
+        category = get_object_or_404(self.queryset, pk=pk)
         serializers_class = CategorySerializer(category)
         return Response(serializers_class.data)
 
@@ -60,7 +60,7 @@ class PortfolioViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        portfolio = get_object_or_404(self.queryset, slug=pk)
+        portfolio = get_object_or_404(self.queryset, pk=pk)
         serializers_class = PortfolioSerializer(portfolio)
         return Response(serializers_class.data)
 
@@ -75,7 +75,7 @@ class TagViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        tag = get_object_or_404(self.queryset, slug=pk)
+        tag = get_object_or_404(self.queryset, pk=pk)
         serializers_class = TagSerializer(tag)
         return Response(serializers_class.data)
 
@@ -90,7 +90,7 @@ class BlogViewSet(viewsets.ViewSet):
         return Response(serializers_class.data)
 
     def retrieve(self, request, pk=None):
-        blog = get_object_or_404(self.queryset, slug=pk)
+        blog = get_object_or_404(self.queryset, pk=pk)
         serializers_class = BlogSerializer(blog)
         return Response(serializers_class.data)
 

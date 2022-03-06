@@ -41,10 +41,25 @@ INSTALLED_APPS = [
 
     #installed apps
     'rest_framework',
+    'parler',
 
     #local apps
     'core.apps.CoreConfig',
 ]
+
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',},
+        {'code': 'ru',},
+        {'code': 'az',},
+    ),
+    'default': {
+        'fallbacks': ['en'],      
+        'hide_untranslated': False,   # Default
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

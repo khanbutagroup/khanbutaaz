@@ -44,7 +44,7 @@ class BlogSerializer(serializers.ModelSerializer):
     tags = TagSerializer(required=False,  many=True)
     class Meta:
         model = Blog
-        fields = ('id', 'title', 'tags', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'text', 'image', 'tags', 'created_at', 'updated_at')
 
 
 class ContactUsSerializer(serializers.ModelSerializer):

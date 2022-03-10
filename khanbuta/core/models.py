@@ -4,9 +4,9 @@ from django.db import models
 
 
 class Slider(models.Model):
-    title = models.CharField(max_length=200),
-    description = models.CharField(max_length=500),
-    button_text = models.CharField(max_length=50),
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
+    button_text = models.CharField(max_length=50)
     button_link = models.CharField(max_length=500)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -23,9 +23,9 @@ class Slider(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField("Text")
-    button_text = models.CharField(max_length=50),
-    button_link = models.CharField(max_length=500),
-    sub_title = models.CharField(max_length=200),
+    button_text = models.CharField(max_length=50)
+    button_link = models.CharField(max_length=500)
+    sub_title = models.CharField(max_length=200)
     sub_desc = models.CharField(max_length=200)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     sub_image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)

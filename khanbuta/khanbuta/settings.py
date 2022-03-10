@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     #installed apps
     'rest_framework',
-    'parler',
+    # 'parler',
     'corsheaders',
 
     #local apps

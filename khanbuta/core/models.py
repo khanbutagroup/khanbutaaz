@@ -1,15 +1,13 @@
 from django.db import models
 # from django.utils.translation import gettext_lazy as _
-from parler.models import TranslatableModel, TranslatedFields
+# from parler.models import models.Model, TranslatedFields
 
 
-class Slider(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200),
-        description = models.CharField(max_length=500),
-        button_text = models.CharField(max_length=50),
-        button_link = models.CharField(max_length=500)
-    )
+class Slider(models.Model):
+    title = models.CharField(max_length=200),
+    description = models.CharField(max_length=500),
+    button_text = models.CharField(max_length=50),
+    button_link = models.CharField(max_length=500)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -22,15 +20,13 @@ class Slider(TranslatableModel):
         verbose_name_plural = 'Sliderler'
 
 
-class Service(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200),
-        text = models.TextField("Text"),
-        button_text = models.CharField(max_length=50),
-        button_link = models.CharField(max_length=500),
-        sub_title = models.CharField(max_length=200),
-        sub_desc = models.CharField(max_length=200)
-    )
+class Service(models.Model):
+    title = models.CharField(max_length=200),
+    text = models.TextField("Text"),
+    button_text = models.CharField(max_length=50),
+    button_link = models.CharField(max_length=500),
+    sub_title = models.CharField(max_length=200),
+    sub_desc = models.CharField(max_length=200)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     sub_image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,10 +40,8 @@ class Service(TranslatableModel):
         verbose_name_plural = 'Servisler'
 
 
-class SubService(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200)
-    )
+class SubService(models.Model):
+    title = models.CharField(max_length=200)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='sub_services', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -60,10 +54,8 @@ class SubService(TranslatableModel):
         verbose_name_plural = 'Sub Servisler'
 
 
-class Category(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200)
-    )
+class Category(models.Model):
+    title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -75,10 +67,8 @@ class Category(TranslatableModel):
         verbose_name_plural = 'Kategoriyalar'
 
 
-class Portfolio(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200)
-    )
+class Portfolio(models.Model):
+    title = models.CharField(max_length=200)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='portfolios', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -92,11 +82,9 @@ class Portfolio(TranslatableModel):
         verbose_name_plural = 'Portfoliolar'
 
 
-class Blog(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200),
-        text = models.TextField("Text")
-    )
+class Blog(models.Model):
+    title = models.CharField(max_length=200),
+    text = models.TextField("Text")
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     tags = models.ManyToManyField('Tag', db_index=True, related_name='blogs', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -110,10 +98,8 @@ class Blog(TranslatableModel):
         verbose_name_plural = 'Bloglar'
 
 
-class Tag(TranslatableModel):
-    translations = TranslatedFields(
-        title = models.CharField(max_length=200)
-    )
+class Tag(models.Model):
+    title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

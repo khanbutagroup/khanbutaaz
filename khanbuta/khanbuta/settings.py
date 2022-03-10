@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     #installed apps
     'rest_framework',
-    # 'parler',
     'corsheaders',
 
     #local apps
@@ -50,19 +49,6 @@ INSTALLED_APPS = [
 
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-
-PARLER_LANGUAGES = {
-    None: (
-        {'code': 'en',},
-        {'code': 'ru',},
-        {'code': 'az',},
-    ),
-    'default': {
-        'fallbacks': ['en'],      
-        'hide_untranslated': False,   # Default
-    }
-}
 
 
 MIDDLEWARE = [

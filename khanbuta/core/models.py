@@ -21,8 +21,8 @@ class Slider(models.Model):
 
 
 class Service(models.Model):
-    title = models.CharField(max_length=200),
-    text = models.TextField("Text"),
+    title = models.CharField(max_length=200)
+    text = models.TextField("Text")
     button_text = models.CharField(max_length=50),
     button_link = models.CharField(max_length=500),
     sub_title = models.CharField(max_length=200),
@@ -83,7 +83,7 @@ class Portfolio(models.Model):
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length=200),
+    title = models.CharField(max_length=200)
     text = models.TextField("Text")
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     tags = models.ManyToManyField('Tag', db_index=True, related_name='blogs', null=True, blank=True)

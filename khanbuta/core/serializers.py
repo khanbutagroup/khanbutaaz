@@ -1,5 +1,3 @@
-from statistics import mode
-from unicodedata import category
 from rest_framework import serializers
 from .models import *
 

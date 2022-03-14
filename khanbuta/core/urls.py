@@ -13,6 +13,7 @@ router.register('portfolios', PortfolioViewSet, basename='portfolio')
 router.register('tags', TagViewSet, basename='tag')
 router.register('blogs', BlogViewSet, basename='blog')
 router.register('contactus', ContactUsViewSet, basename='contactus')
+router.register('partners', PartnerViewSet, basename='partner')
 
 urlpatterns = [
     path('', include(router.urls)),

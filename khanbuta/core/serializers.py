@@ -5,7 +5,7 @@ from .models import *
 class SliderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slider
-        fields = ('id', 'title', 'description', 'image', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'description', 'button_text', 'button_link', 'image', 'created_at', 'updated_at')
 
 
 class SubServiceSerializer(serializers.ModelSerializer):
@@ -51,3 +51,9 @@ class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactUs
         fields = ('id', 'first_name', 'last_name', 'email', 'number', 'message', 'created_at', 'updated_at')
+
+
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partner
+        fields = ('id', 'image', 'created_at', 'updated_at')

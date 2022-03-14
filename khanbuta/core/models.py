@@ -126,3 +126,14 @@ class ContactUs(models.Model):
     class Meta:
         verbose_name = 'Contact Us'
         verbose_name_plural = 'Contact Uslar'
+
+
+class Partner(models.Model):
+    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Partnyor'
+        verbose_name_plural = 'Partnyorlar'

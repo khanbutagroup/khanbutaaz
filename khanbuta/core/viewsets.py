@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import Slider, Service, Category, Portfolio, Tag, Blog, ContactUs
-from .serializers import SliderSerializer, ServiceSerializer, CategorySerializer, PortfolioSerializer, TagSerializer, BlogSerializer, ContactUsSerializer
+from .models import Slider, Service, Category, Portfolio, Tag, Blog, ContactUs, Partner
+from .serializers import SliderSerializer, ServiceSerializer, CategorySerializer, PortfolioSerializer, TagSerializer, BlogSerializer, ContactUsSerializer, PartnerSerializer
 from django.shortcuts import get_object_or_404
 
 
@@ -98,3 +98,18 @@ class BlogViewSet(viewsets.ViewSet):
 class ContactUsViewSet(viewsets.ModelViewSet):
     queryset = ContactUs.objects.all()
     serializer_class = ContactUsSerializer
+
+
+class PartnerViewSet(viewsets.ViewSet):
+    queryset = Partner.objects.all()
+    serializer_class = PartnerSerializer
+
+    def list(self, request):
+        self.queryset = Partner.objects.all()
+        serializers_class = PartnerSerializer(self.queryset, many=True)
+        return Response(serializers_class.data)
+
+    def retrieve(self, request, pk=None):
+        partner = get_object_or_404(self.queryset, pk=pk)
+        serializers_class = PartnerSerializer(partner)
+        return Response(serializers_class.data)

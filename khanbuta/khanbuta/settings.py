@@ -36,17 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 
     # installed apps
     'rest_framework',
     'corsheaders',
-    'ckeditor',
 
     # local apps
     'core.apps.CoreConfig',
 ]
 
-CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -140,12 +140,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# else:
-#     STATICFILES_DIRS = [
-#         os.path.join(BASE_DIR, "static")
-#     ]
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static")
+    ]
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',

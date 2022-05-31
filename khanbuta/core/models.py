@@ -85,7 +85,7 @@ class Portfolio(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
-    text = RichTextField(null=True, blank=True)
+    text = RichTextField()
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     tags = models.ManyToManyField('Tag', db_index=True, related_name='blogs', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -15,12 +15,12 @@ services:
       - VIRTUAL_PORT=5432
 
   web:
-    container_name: HandyDaddy
+    container_name: Khanbuta
     build: .
     restart: "always"
     env_file: .env
     environment:
-      - VIRTUAL_HOST=116.203.93.5,handy.efgroup.az
+      - VIRTUAL_HOST=159.89.4.100
       - VIRTUAL_PORT=8000
       - TIMEOUT=300
       - HTTP_PORT=8000

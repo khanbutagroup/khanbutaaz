@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 # from django.utils.translation import gettext_lazy as _
 # from parler.models import models.Model, TranslatedFields
@@ -22,7 +23,7 @@ class Slider(models.Model):
 
 class Service(models.Model):
     title = models.CharField(max_length=200)
-    text = models.TextField("Text")
+    text = RichTextField(null=True, blank=True)
     button_text = models.CharField(max_length=50)
     button_link = models.CharField(max_length=500)
     sub_title = models.CharField(max_length=200)
@@ -84,7 +85,7 @@ class Portfolio(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
-    text = models.TextField("Text")
+    text = RichTextField(null=True, blank=True)
     image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
     tags = models.ManyToManyField('Tag', db_index=True, related_name='blogs', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -116,7 +117,7 @@ class ContactUs(models.Model):
     last_name = models.CharField(max_length=200, blank=False, null=False)
     email = models.EmailField(('email adress'), null=False, blank=False)
     number = models.CharField(max_length=50)
-    message = models.TextField("Message")
+    message = RichTextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

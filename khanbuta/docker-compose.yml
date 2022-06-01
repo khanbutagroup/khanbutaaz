@@ -20,7 +20,7 @@ services:
     restart: "always"
     env_file: .env
     environment:
-      - VIRTUAL_HOST=159.89.4.100
+      - VIRTUAL_HOST=159.89.4.100,api.khanbutagroup.az,khanbutagroup.az,khanbutagroup.com
       - VIRTUAL_PORT=8000
       - TIMEOUT=300
       - HTTP_PORT=8000

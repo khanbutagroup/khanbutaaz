@@ -16,9 +16,11 @@ class SubServiceSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     sub_services = SubServiceSerializer(required=False, many=True)
+
     class Meta:
         model = Service
-        fields = ('id', 'title', 'text', 'image', 'sub_title', 'sub_desc', 'sub_image', 'sub_services', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'text', 'image', 'sub_title', 'sub_desc', 'sub_image', 'sub_services', 'created_at',
+                  'updated_at')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -29,6 +31,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PortfolioSerializer(serializers.ModelSerializer):
     category = CategorySerializer(required=False)
+
     class Meta:
         model = Portfolio
         fields = ('id', 'title', 'image', 'category', 'created_at', 'updated_at')
@@ -41,7 +44,8 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(required=False,  many=True)
+    tags = TagSerializer(required=False, many=True)
+
     class Meta:
         model = Blog
         fields = ('id', 'title', 'text', 'image', 'tags', 'created_at', 'updated_at')
@@ -57,3 +61,21 @@ class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         fields = ('id', 'image', 'created_at', 'updated_at')
+
+
+class FooterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FooterFields
+        fields = ('id', 'location', 'email', 'about_text')
+
+
+class NumbersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Numbers
+        fields = ('id', 'phone')
+
+
+class SocialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Socials
+        fields = ('icon', 'name', 'link')

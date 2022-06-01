@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import Slider, Service, Category, Portfolio, Tag, Blog, ContactUs, Partner
-from .serializers import SliderSerializer, ServiceSerializer, CategorySerializer, PortfolioSerializer, TagSerializer, BlogSerializer, ContactUsSerializer, PartnerSerializer
+from .models import Slider, Service, Category, Portfolio, Tag, Blog, ContactUs, Partner, FooterFields, Numbers, Socials
+from .serializers import SliderSerializer, ServiceSerializer, CategorySerializer, PortfolioSerializer, TagSerializer, \
+    BlogSerializer, ContactUsSerializer, PartnerSerializer, FooterSerializer, NumbersSerializer, SocialSerializer
 from django.shortcuts import get_object_or_404
 
 
@@ -112,4 +113,49 @@ class PartnerViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         partner = get_object_or_404(self.queryset, pk=pk)
         serializers_class = PartnerSerializer(partner)
+        return Response(serializers_class.data)
+
+
+class FooterViewSet(viewsets.ViewSet):
+    queryset = FooterFields.objects.all()
+    serializer_class = FooterSerializer
+
+    def list(self, request):
+        self.queryset = FooterFields.objects.all()
+        serializers_class = FooterSerializer(self.queryset, many=True)
+        return Response(serializers_class.data)
+
+    def retrieve(self, request, pk=None):
+        partner = get_object_or_404(self.queryset, pk=pk)
+        serializers_class = FooterSerializer(partner)
+        return Response(serializers_class.data)
+
+
+class NumberViewSet(viewsets.ViewSet):
+    queryset = Numbers.objects.all()
+    serializer_class = NumbersSerializer
+
+    def list(self, request):
+        self.queryset = Numbers.objects.all()
+        serializers_class = NumbersSerializer(self.queryset, many=True)
+        return Response(serializers_class.data)
+
+    def retrieve(self, request, pk=None):
+        partner = get_object_or_404(self.queryset, pk=pk)
+        serializers_class = NumbersSerializer(partner)
+        return Response(serializers_class.data)
+
+
+class SocialViewSet(viewsets.ViewSet):
+    queryset = Socials.objects.all()
+    serializer_class = SocialSerializer
+
+    def list(self, request):
+        self.queryset = Socials.objects.all()
+        serializers_class = SocialSerializer(self.queryset, many=True)
+        return Response(serializers_class.data)
+
+    def retrieve(self, request, pk=None):
+        partner = get_object_or_404(self.queryset, pk=pk)
+        serializers_class = SocialSerializer(partner)
         return Response(serializers_class.data)

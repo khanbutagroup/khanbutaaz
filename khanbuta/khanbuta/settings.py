@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # local apps
     'core.apps.CoreConfig',
+    'django.contrib.sitemaps'
 ]
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"

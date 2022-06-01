@@ -2,6 +2,7 @@ from ckeditor.fields import RichTextField
 from django.db import models
 # from django.utils.translation import gettext_lazy as _
 # from parler.models import models.Model, TranslatedFields
+from django.urls import reverse
 
 
 class Slider(models.Model):
@@ -9,7 +10,7 @@ class Slider(models.Model):
     description = models.CharField(max_length=500)
     button_text = models.CharField(max_length=50)
     button_link = models.CharField(max_length=500)
-    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+    image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,8 +29,8 @@ class Service(models.Model):
     button_link = models.CharField(max_length=500)
     sub_title = models.CharField(max_length=200)
     sub_desc = models.CharField(max_length=200)
-    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
-    sub_image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+    image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
+    sub_image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -70,7 +71,7 @@ class Category(models.Model):
 
 class Portfolio(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+    image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='portfolios', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -86,7 +87,7 @@ class Portfolio(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     text = RichTextField()
-    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+    image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
     tags = models.ManyToManyField('Tag', db_index=True, related_name='blogs', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -130,7 +131,7 @@ class ContactUs(models.Model):
 
 
 class Partner(models.Model):
-    image = models.ImageField('Image',upload_to='icons/', null=False, blank=False)
+    image = models.ImageField('Image', upload_to='icons/', null=False, blank=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -138,3 +139,32 @@ class Partner(models.Model):
     class Meta:
         verbose_name = 'Partnyor'
         verbose_name_plural = 'Partnyorlar'
+
+
+class FooterFields(models.Model):
+    location = models.TextField()
+    email = models.CharField(max_length=255)
+    about_text = models.TextField()
+
+    def __str__(self):
+        return f'{self.email}'
+
+    class Meta:
+        verbose_name = 'Footer'
+        verbose_name_plural = 'Footer'
+
+
+class Numbers(models.Model):
+    phone = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.phone}'
+
+
+class Socials(models.Model):
+    icon = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    link = models.CharField(max_length=555)
+
+    def __str__(self):
+        return f'{self.name}'
